@@ -18,15 +18,15 @@ function UserProfile() {
   useEffect(() => {
     if (username) {
       setLoading(true);
-
+  
       setTimeout(() => {
         setProfile(profiles[username.toLowerCase()] || null);
         setLoading(false);
       }, 1000);
     } else {
-      setProfile(null);
+      setProfile(null); // Reset profile when no user is selected
     }
-  }, [username], [profiles]); // Fetch profile data whenever the username from URL changes
+  }, [username, profiles]); // Fetch profile data whenever the username from URL changes
 
   const handleSelectChange = (event) => {
     const selectedUser = event.target.value;
